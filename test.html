@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arithmetic Operations</title>
+</head>
+<body>
+    <h2>Simple Calculator</h2>
+
+    <input type="number" id="num1" placeholder="Enter first number">
+    <input type="number" id="num2" placeholder="Enter second number">
+    
+    <button onclick="performOperation('+')">Add</button>
+    <button onclick="performOperation('-')">Subtract</button>
+    <button onclick="performOperation('*')">Multiply</button>
+    <button onclick="performOperation('/')">Divide</button>
+
+    <h3>Result: <span id="result">0</span></h3>
+
+    <script>
+        function performOperation(operator) {
+            // Get values from input fields
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let num2 = parseFloat(document.getElementById("num2").value);
+            let result = 0;
+
+            // Check if input fields are not empty
+            if (isNaN(num1) || isNaN(num2)) {
+                alert("Please enter valid numbers!");
+                return;
+            }
+
+            // Perform the selected operation
+            switch (operator) {
+                case '+': result = num1 + num2; break;
+                case '-': result = num1 - num2; break;
+                case '*': result = num1 * num2; break;
+                case '/': 
+                    if (num2 === 0) {
+                        alert("Cannot divide by zero!");
+                        return;
+                    }
+                    result = num1 / num2; 
+                    break;
+                default: alert("Invalid operation");
+            }
+
+            // Display result
+            document.getElementById("result").textContent = result;
+        }
+    </script>
+</body>
+</html>
